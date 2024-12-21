@@ -10,16 +10,20 @@ export class MainMenu extends Scene {
   }
 
   create() {
+    // this.scene.start('SceneName');
+
     this.add.text(0, 0, "Examples", {
       fontSize: "32px",
     });
 
-    this.add.text(20, 40, "Actions:", {
+    const actionText = this.add.text(20, 40, "Actions:", {
       fontSize: "16px",
     });
 
+    const options = [actionText];
+
     menuOptions.forEach((option, index) => {
-      const text = this.add.text(100 + index * 70, 40, option, {
+      const text = this.add.text(0, 0, option, {
         fontSize: "16px",
         color: "#00ff00",
       });
@@ -37,6 +41,10 @@ export class MainMenu extends Scene {
         text.setStyle({ color: "#00ff00" });
         this.game.canvas.style.cursor = "default";
       });
+
+      options.push(text);
     });
+
+    Phaser.Actions.AlignTo(options, Phaser.Display.Align.RIGHT_BOTTOM, 8);
   }
 }
