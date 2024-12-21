@@ -4,6 +4,7 @@ import { AlignToBase } from "./scenes/examples/actions/AlignToBase";
 import { AlignToOffset } from "./scenes/examples/actions/AlignToOffset";
 import { Angle } from "./scenes/examples/actions/Angle";
 import { AngleWithStep } from "./scenes/examples/actions/AngleWithStep";
+import { CreateAnimationOnSprite } from "./scenes/examples/actions/CreateAnimationOnSprite";
 import { MainMenu } from "./scenes/MainMenu";
 import { Preloader } from "./scenes/Preloader";
 
@@ -17,6 +18,7 @@ const ActionExampleScenes = [
   AlignToOffset,
   Angle,
   AngleWithStep,
+  CreateAnimationOnSprite
 ];
 
 const ExampleScenes = [...ActionExampleScenes];

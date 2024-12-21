@@ -8,7 +8,9 @@ const actionExampleOptions = [
   "AngleWithStep",
 ];
 
-const menuOptions = [...actionExampleOptions];
+const animationExampleOptions = ["CreateAnimationOnSprite"];
+
+const menuOptions = [actionExampleOptions, animationExampleOptions];
 
 export class MainMenu extends Scene {
   constructor() {
@@ -26,31 +28,40 @@ export class MainMenu extends Scene {
       fontSize: "16px",
     });
 
-    const options = [actionText];
-
-    menuOptions.forEach((option, index) => {
-      const text = this.add.text(0, 0, option, {
-        fontSize: "16px",
-        color: "#00ff00",
-      });
-
-      text.setInteractive();
-      text.on("pointerdown", () => {
-        this.scene.start(menuOptions[index]);
-      });
-
-      text.on("pointerover", () => {
-        text.setStyle({ color: "#ffff00" });
-        this.game.canvas.style.cursor = "pointer";
-      });
-      text.on("pointerout", () => {
-        text.setStyle({ color: "#00ff00" });
-        this.game.canvas.style.cursor = "default";
-      });
-
-      options.push(text);
+    const animationText = this.add.text(20, 60, "Animations:", {
+      fontSize: "16px",
     });
 
-    Phaser.Actions.AlignTo(options, Phaser.Display.Align.RIGHT_BOTTOM, 8);
+    const options = [actionText, animationText];
+
+    menuOptions.forEach((menuItemOptions, index) => {
+      const itemOptions = [options[index]];
+
+      menuItemOptions.forEach((option, index) => {
+        const text = this.add.text(0, 0, option, {
+          fontSize: "16px",
+          color: "#00ff00",
+        });
+
+        text.setInteractive();
+        text.on("pointerdown", () => {
+          this.scene.start(menuItemOptions[index]);
+        });
+
+        text.on("pointerover", () => {
+          text.setStyle({ color: "#ffff00" });
+          this.game.canvas.style.cursor = "pointer";
+        });
+
+        text.on("pointerout", () => {
+          text.setStyle({ color: "#00ff00" });
+          this.game.canvas.style.cursor = "default";
+        });
+
+        itemOptions.push(text);
+      });
+
+      Phaser.Actions.AlignTo(itemOptions, Phaser.Display.Align.RIGHT_BOTTOM, 8);
+    });
   }
 }
