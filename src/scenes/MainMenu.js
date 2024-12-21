@@ -1,6 +1,11 @@
 import { Scene } from "phaser";
 
-const actionExampleOptions = ["AlignTo", "AlignToBase", "AlignToOffset"];
+const actionExampleOptions = [
+  "AlignTo",
+  "AlignToBase",
+  "AlignToOffset",
+  "Angle",
+];
 
 const menuOptions = [...actionExampleOptions];
 
