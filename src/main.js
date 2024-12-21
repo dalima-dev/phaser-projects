@@ -1,5 +1,6 @@
 import { Boot } from "./scenes/Boot";
 import { AlignTo } from "./scenes/examples/actions/AlignTo";
+import { AlignToBase } from "./scenes/examples/actions/AlignToBase";
 import { MainMenu } from "./scenes/MainMenu";
 import { Preloader } from "./scenes/Preloader";
 
@@ -7,7 +8,7 @@ import { Preloader } from "./scenes/Preloader";
 //  https://newdocs.phaser.io/docs/3.70.0/Phaser.Types.Core.GameConfig
 
 // Example scenes
-const ActionExampleScenes = [AlignTo];
+const ActionExampleScenes = [AlignTo, AlignToBase];
 
 const ExampleScenes = [...ActionExampleScenes];
 
