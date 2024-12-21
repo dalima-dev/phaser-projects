@@ -1,4 +1,5 @@
 import { Scene } from "phaser";
+import { goBack } from "../../../utils/goBack";
 
 export class AlignTo extends Scene {
   constructor() {
@@ -6,6 +7,8 @@ export class AlignTo extends Scene {
   }
 
   create() {
+    goBack(this);
+
     const gems = [];
 
     //  This is our 'lead' Sprite, the first one in the array

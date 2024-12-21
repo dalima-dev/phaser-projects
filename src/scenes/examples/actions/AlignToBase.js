@@ -1,5 +1,6 @@
 import { Scene } from "phaser";
 import { getRandomHex } from "../../../utils/getRandomHex";
+import { goBack } from "../../../utils/goBack";
 
 export class AlignToBase extends Scene {
   constructor() {
@@ -7,6 +8,8 @@ export class AlignToBase extends Scene {
   }
 
   create() {
+    goBack(this);
+
     this.add.rectangle(0, 500, 800, 100, 0x9d2d9d).setOrigin(0, 0);
 
     const rectangles = [];
