@@ -19,6 +19,7 @@ export class SixtyFpsAnimationTest extends Scene {
   create() {
     this.bg = this.add.tileSprite(0, 38, 800, 296, "sky").setOrigin(0, 0);
     this.trees = this.add.tileSprite(0, 280, 800, 320, "trees").setOrigin(0, 0);
+    goBack(this);
 
     const animConfig = {
       key: "walk",

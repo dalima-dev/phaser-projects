@@ -5,7 +5,7 @@ export function goBack(scene, x = 720, y = 10) {
   });
 
   goBack.setInteractive();
-  goBack.on("pointerdown", () => {
+  goBack.once("pointerdown", () => {
     scene.scene.start("MainMenu");
   });
 
