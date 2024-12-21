@@ -24,8 +24,6 @@ export class AlignTo extends Scene {
       );
     }
 
-    console.log(this);
-
     Phaser.Actions.AlignTo(gems, Phaser.Display.Align.RIGHT_CENTER);
   }
 }
