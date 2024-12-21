@@ -5,6 +5,7 @@ const actionExampleOptions = [
   "AlignToBase",
   "AlignToOffset",
   "Angle",
+  "AngleWithStep",
 ];
 
 const menuOptions = [...actionExampleOptions];
