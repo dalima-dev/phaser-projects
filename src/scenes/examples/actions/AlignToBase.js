@@ -1,4 +1,5 @@
 import { Scene } from "phaser";
+import { getRandomHex } from "../../../utils/getRandomHex";
 
 export class AlignToBase extends Scene {
   constructor() {
@@ -11,15 +12,7 @@ export class AlignToBase extends Scene {
     const rectangles = [];
 
     for (let i = 0; i < 8; i++) {
-      rectangles.push(
-        this.add.rectangle(
-          100,
-          500,
-          50,
-          50,
-          Number(`0xff${Math.floor(Math.random() * 100000000)}`)
-        )
-      );
+      rectangles.push(this.add.rectangle(100, 500, 50, 50, getRandomHex()));
     }
 
     Phaser.Actions.AlignTo(rectangles, Phaser.Display.Align.RIGHT_BOTTOM, 10);
