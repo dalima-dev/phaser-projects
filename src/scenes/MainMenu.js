@@ -1,28 +1,42 @@
-import { Scene } from 'phaser';
+import { Scene } from "phaser";
 
-export class MainMenu extends Scene
-{
-    constructor ()
-    {
-        super('MainMenu');
-    }
+const actionExampleOptions = ["AlignTo"];
 
-    create ()
-    {
-        this.add.image(512, 384, 'background');
+const menuOptions = [...actionExampleOptions];
 
-        this.add.image(512, 300, 'logo');
+export class MainMenu extends Scene {
+  constructor() {
+    super("MainMenu");
+  }
 
-        this.add.text(512, 460, 'Main Menu', {
-            fontFamily: 'Arial Black', fontSize: 38, color: '#ffffff',
-            stroke: '#000000', strokeThickness: 8,
-            align: 'center'
-        }).setOrigin(0.5);
+  create() {
+    this.add.text(0, 0, "Examples", {
+      fontSize: "32px",
+    });
 
-        this.input.once('pointerdown', () => {
+    this.add.text(20, 40, "Actions:", {
+      fontSize: "16px",
+    });
 
-            this.scene.start('Game');
+    menuOptions.forEach((option, index) => {
+      const text = this.add.text(100 + index * 70, 40, option, {
+        fontSize: "16px",
+        color: "#00ff00",
+      });
 
-        });
-    }
+      text.setInteractive();
+      text.on("pointerdown", () => {
+        this.scene.start(menuOptions[index]);
+      });
+
+      text.on("pointerover", () => {
+        text.setStyle({ color: "#ffff00" });
+        this.game.canvas.style.cursor = "pointer";
+      });
+      text.on("pointerout", () => {
+        text.setStyle({ color: "#00ff00" });
+        this.game.canvas.style.cursor = "default";
+      });
+    });
+  }
 }
