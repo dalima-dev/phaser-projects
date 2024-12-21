@@ -8,7 +8,10 @@ const actionExampleOptions = [
   "AngleWithStep",
 ];
 
-const animationExampleOptions = ["CreateAnimationOnSprite"];
+const animationExampleOptions = [
+  "CreateAnimationOnSprite",
+  "SixtyFpsAnimationTest",
+];
 
 const menuOptions = [actionExampleOptions, animationExampleOptions];
 

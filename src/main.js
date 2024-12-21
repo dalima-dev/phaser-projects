@@ -5,6 +5,7 @@ import { AlignToOffset } from "./scenes/examples/actions/AlignToOffset";
 import { Angle } from "./scenes/examples/actions/Angle";
 import { AngleWithStep } from "./scenes/examples/actions/AngleWithStep";
 import { CreateAnimationOnSprite } from "./scenes/examples/actions/CreateAnimationOnSprite";
+import { SixtyFpsAnimationTest } from "./scenes/examples/actions/SixtyFpsAnimationTest";
 import { MainMenu } from "./scenes/MainMenu";
 import { Preloader } from "./scenes/Preloader";
 
@@ -18,10 +19,11 @@ const ActionExampleScenes = [
   AlignToOffset,
   Angle,
   AngleWithStep,
-  CreateAnimationOnSprite
 ];
 
-const ExampleScenes = [...ActionExampleScenes];
+const AnimationExampleScenes = [CreateAnimationOnSprite, SixtyFpsAnimationTest];
+
+const ExampleScenes = [...ActionExampleScenes, ...AnimationExampleScenes];
 
 // Game scenes
 const GameScenes = [];
