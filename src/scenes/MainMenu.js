@@ -15,6 +15,8 @@ const animationExampleOptions = [
 
 const menuOptions = [actionExampleOptions, animationExampleOptions];
 
+const gameOptions = [["Pong"]];
+
 export class MainMenu extends Scene {
   constructor() {
     super("MainMenu");
@@ -35,9 +37,13 @@ export class MainMenu extends Scene {
       fontSize: "16px",
     });
 
-    const options = [actionText, animationText];
+    const gamesText = this.add.text(20, 80, "Games:", {
+      fontSize: "16px",
+    });
 
-    menuOptions.forEach((menuItemOptions, index) => {
+    const options = [actionText, animationText, gamesText];
+
+    [...menuOptions, ...gameOptions].forEach((menuItemOptions, index) => {
       const itemOptions = [options[index]];
 
       menuItemOptions.forEach((option, index) => {

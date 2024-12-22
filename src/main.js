@@ -6,6 +6,7 @@ import { Angle } from "./scenes/examples/actions/Angle";
 import { AngleWithStep } from "./scenes/examples/actions/AngleWithStep";
 import { CreateAnimationOnSprite } from "./scenes/examples/actions/CreateAnimationOnSprite";
 import { SixtyFpsAnimationTest } from "./scenes/examples/actions/SixtyFpsAnimationTest";
+import { Pong } from "./scenes/games/Pong";
 import { MainMenu } from "./scenes/MainMenu";
 import { Preloader } from "./scenes/Preloader";
 
@@ -26,7 +27,7 @@ const AnimationExampleScenes = [CreateAnimationOnSprite, SixtyFpsAnimationTest];
 const ExampleScenes = [...ActionExampleScenes, ...AnimationExampleScenes];
 
 // Game scenes
-const GameScenes = [];
+const GameScenes = [Pong];
 
 const config = {
   type: Phaser.AUTO,
