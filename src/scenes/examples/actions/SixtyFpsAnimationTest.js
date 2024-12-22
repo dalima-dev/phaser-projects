@@ -36,7 +36,7 @@ export class SixtyFpsAnimationTest extends Scene {
   }
 
   update() {
-    this.bg.tilePositionX -= 0.3;
+    this.bg.tilePositionX -= 0.1;
     this.trees.tilePositionX -= 6;
   }
 }
