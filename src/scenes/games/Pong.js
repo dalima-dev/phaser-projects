@@ -15,10 +15,10 @@ export class Pong extends Scene {
     const centerX = this.game.config.width / 2;
     const centerY = this.game.config.height / 2;
 
-    const pixel = this.add.rectangle(centerX, centerY, 5, 5, 0xffffff);
-    this.physics.add.existing(pixel);
+    const ball = this.add.rectangle(centerX, centerY, 5, 5, 0xffffff);
+    this.physics.add.existing(ball);
 
-    pixel.body
+    ball.body
       .setVelocity(INITIAL_VELOCITY, INITIAL_VELOCITY)
       .setBounce(1, 1)
       .setCollideWorldBounds(true);
