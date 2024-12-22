@@ -51,7 +51,7 @@ export class Pong extends Scene {
   create() {
     this.ball = this.add.rectangle(
       this.centerX,
-      this.centerY,
+      Phaser.Math.Between(0, this.game.config.height),
       5,
       5,
       OBJECTS_COLOR
