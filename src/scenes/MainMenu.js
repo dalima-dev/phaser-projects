@@ -23,7 +23,7 @@ export class MainMenu extends Scene {
   }
 
   create() {
-    // this.scene.start(menuOptions.at(-1));
+    // this.scene.start("SceneName");
 
     this.add.text(0, 0, "Examples", {
       fontSize: "32px",
