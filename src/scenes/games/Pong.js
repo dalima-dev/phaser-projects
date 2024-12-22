@@ -21,6 +21,19 @@ export class Pong extends Scene {
 
     this.cameras.main.setBackgroundColor("#000000");
 
+    this.firstPlayerScoreText = this.add.text(this.centerX - 4 * 40, 0, "0", {
+      fontSize: "80px",
+    });
+
+    this.secondPlayerScoreText = this.add.text(
+      this.centerX - 10 + 3 * 40,
+      0,
+      "0",
+      {
+        fontSize: "80px",
+      }
+    );
+
     const graphics = this.add.graphics();
     graphics.lineStyle(2, OBJECTS_COLOR);
 
