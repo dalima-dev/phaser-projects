@@ -1,6 +1,6 @@
 import { Scene } from "phaser";
 
-const INITIAL_VELOCITY = 300;
+const INITIAL_VELOCITY = 200;
 const INITIAL_LINE_POS = 30;
 const LINE_GAP = 5;
 const LINE_HEIGHT = 20;
@@ -85,9 +85,37 @@ export class Pong extends Scene {
 
     this.ball.body
       .setVelocity(INITIAL_VELOCITY, INITIAL_VELOCITY)
+      .setMaxVelocity(INITIAL_VELOCITY, INITIAL_VELOCITY)
       .setBounce(1, 1)
       .setCollideWorldBounds();
+
+    this.secondPlayer.body.setMaxVelocityX(0).setCollideWorldBounds();
   }
 
-  update() {}
+  update() {
+    // console.log(
+    //   this.secondPlayer.body.acceleration.y,
+    //   this.secondPlayer.body.velocity.y
+    // );
+
+    if (this.secondPlayer.body.velocity.y > 0) {
+      this.secondPlayer.body.setAccelerationY(-2000);
+    } else {
+      this.secondPlayer.body.setAccelerationY(2000);
+    }
+
+    if (Math.abs(this.secondPlayer.body.velocity.y) <= 5) {
+      this.secondPlayer.body.setAccelerationY(0);
+      this.secondPlayer.body.setVelocityY(0);
+    }
+
+    if (this.ball.body.velocity.x > 0 && this.ball.x >= this.centerX) {
+      this.physics.moveTo(
+        this.secondPlayer,
+        this.secondPlayer.x,
+        this.ball.y,
+        300
+      );
+    }
+  }
 }
