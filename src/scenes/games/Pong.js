@@ -22,16 +22,24 @@ export class Pong extends Scene {
     this.centerX = this.game.config.width / 2;
     this.centerY = this.game.config.height / 2;
 
+    this.firstPlayerScore = this.data.get("firstPlayerScore") || 0;
+    this.secondPlayerScore = this.data.get("secondPlayerScore") || 0;
+
     this.cameras.main.setBackgroundColor("#000000");
 
-    this.firstPlayerScoreText = this.add.text(this.centerX - 4 * 40, 0, "0", {
-      fontSize: "80px",
-    });
+    this.firstPlayerScoreText = this.add.text(
+      this.centerX - 4 * 40,
+      0,
+      this.firstPlayerScore,
+      {
+        fontSize: "80px",
+      }
+    );
 
     this.secondPlayerScoreText = this.add.text(
       this.centerX - 10 + 3 * 40,
       0,
-      "0",
+      this.secondPlayerScore,
       {
         fontSize: "80px",
       }
@@ -115,5 +123,30 @@ export class Pong extends Scene {
         SECOND_PLAYER_ACCELERATION
       );
     }
+
+    if (this.ball.body.position.x >= this.game.config.width - PLAYER_WIDTH) {
+      this.data.inc("firstPlayerScore", 1);
+      this.firstPlayerScoreText.setText(this.firstPlayerScore + 1);
+      this.reinitialize();
+    }
+
+    if (this.ball.body.position.x <= 0) {
+      this.data.inc("secondPlayerScore", 1);
+      this.secondPlayerScoreText.setText(this.secondPlayerScore + 1);
+      this.reinitialize();
+    }
+
+    if (this.firstPlayerScore === 10 || this.secondPlayerScore === 10) {
+      this.data.set("firstPlayerScore", null);
+      this.data.set("secondPlayerScore", null);
+      this.scene.restart();
+    }
+  }
+
+  reinitialize() {
+    this.scene.pause();
+    setTimeout(() => {
+      this.scene.restart();
+    }, 3000);
   }
 }
