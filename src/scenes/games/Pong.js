@@ -147,7 +147,9 @@ export class Pong extends Scene {
         this.secondPlayer,
         this.secondPlayer.x,
         this.ball.y,
-        SECOND_PLAYER_ACCELERATION
+        SECOND_PLAYER_ACCELERATION,
+        0,
+        FIRST_PLAYER_VELOCITY
       );
     }
 
