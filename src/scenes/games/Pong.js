@@ -96,8 +96,14 @@ export class Pong extends Scene {
     this.firstPlayer.body.pushable = false;
     this.secondPlayer.body.pushable = false;
 
+    const rnd = Phaser.Math.RND;
+    const ballDirectionSignalOnStart = rnd.pick([1, -1]);
+
     this.ball.body
-      .setVelocity(INITIAL_VELOCITY, INITIAL_VELOCITY)
+      .setVelocity(
+        ballDirectionSignalOnStart * INITIAL_VELOCITY,
+        INITIAL_VELOCITY
+      )
       .setMaxVelocity(INITIAL_VELOCITY, INITIAL_VELOCITY)
       .setBounce(1, 1)
       .setCollideWorldBounds();
