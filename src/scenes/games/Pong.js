@@ -10,6 +10,8 @@ const PLAYER_WIDTH = 5;
 const PLAYER_HEIGHT = 50;
 const PLAYER_BOUND_DISTANCE = 30;
 
+const FIRST_PLAYER_VELOCITY = 300;
+
 const SECOND_PLAYER_ACCELERATION = 3000;
 const SECOND_PLAYER_FRICTION = SECOND_PLAYER_ACCELERATION - 1000;
 
@@ -100,10 +102,20 @@ export class Pong extends Scene {
       .setBounce(1, 1)
       .setCollideWorldBounds();
 
+    this.cursors = this.input.keyboard.createCursorKeys();
+    this.firstPlayer.body.setMaxVelocityX(0).setCollideWorldBounds();
     this.secondPlayer.body.setMaxVelocityX(0).setCollideWorldBounds();
   }
 
   update() {
+    if (this.cursors.up.isDown) {
+      this.firstPlayer.body.setVelocityY(-FIRST_PLAYER_VELOCITY);
+    } else if (this.cursors.down.isDown) {
+      this.firstPlayer.body.setVelocityY(FIRST_PLAYER_VELOCITY);
+    } else if (this.cursors.up.isUp || this.cursors.down.isUp) {
+      this.firstPlayer.body.setVelocityY(0);
+    }
+
     if (this.secondPlayer.body.velocity.y > 0) {
       this.secondPlayer.body.setAccelerationY(-SECOND_PLAYER_FRICTION);
     } else {
