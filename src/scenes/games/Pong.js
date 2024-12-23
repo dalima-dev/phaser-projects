@@ -61,6 +61,11 @@ export class Pong extends Scene {
     graphics.strokePath();
   }
 
+  preload() {
+    this.load.audio("pong", "assets/sounds/pong.mp3");
+    this.load.audio("pong-score", "assets/sounds/pong-score.mp3");
+  }
+
   create() {
     this.ball = this.add.rectangle(
       this.centerX,
@@ -90,8 +95,12 @@ export class Pong extends Scene {
     this.physics.add.existing(this.firstPlayer);
     this.physics.add.existing(this.secondPlayer);
 
-    this.physics.add.collider(this.ball, this.firstPlayer);
-    this.physics.add.collider(this.ball, this.secondPlayer);
+    this.physics.add.collider(this.ball, this.firstPlayer, () =>
+      this.sound.play("pong")
+    );
+    this.physics.add.collider(this.ball, this.secondPlayer, () =>
+      this.sound.play("pong")
+    );
 
     this.firstPlayer.body.pushable = false;
     this.secondPlayer.body.pushable = false;
@@ -143,12 +152,14 @@ export class Pong extends Scene {
     }
 
     if (this.ball.body.position.x >= this.game.config.width - PLAYER_WIDTH) {
+      this.sound.play("pong-score");
       this.data.inc("firstPlayerScore", 1);
       this.firstPlayerScoreText.setText(this.firstPlayerScore + 1);
       this.reinitialize();
     }
 
     if (this.ball.body.position.x <= 0) {
+      this.sound.play("pong-score");
       this.data.inc("secondPlayerScore", 1);
       this.secondPlayerScoreText.setText(this.secondPlayerScore + 1);
       this.reinitialize();
