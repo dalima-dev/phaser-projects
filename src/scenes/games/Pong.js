@@ -10,6 +10,9 @@ const PLAYER_WIDTH = 5;
 const PLAYER_HEIGHT = 50;
 const PLAYER_BOUND_DISTANCE = 30;
 
+const SECOND_PLAYER_ACCELERATION = 3000;
+const SECOND_PLAYER_FRICTION = SECOND_PLAYER_ACCELERATION - 1000;
+
 export class Pong extends Scene {
   constructor() {
     super("Pong");
@@ -93,28 +96,23 @@ export class Pong extends Scene {
   }
 
   update() {
-    // console.log(
-    //   this.secondPlayer.body.acceleration.y,
-    //   this.secondPlayer.body.velocity.y
-    // );
-
     if (this.secondPlayer.body.velocity.y > 0) {
-      this.secondPlayer.body.setAccelerationY(-2000);
+      this.secondPlayer.body.setAccelerationY(-SECOND_PLAYER_FRICTION);
     } else {
-      this.secondPlayer.body.setAccelerationY(2000);
+      this.secondPlayer.body.setAccelerationY(SECOND_PLAYER_FRICTION);
     }
 
-    if (Math.abs(this.secondPlayer.body.velocity.y) <= 5) {
+    if (Math.abs(this.secondPlayer.body.velocity.y) <= 10) {
       this.secondPlayer.body.setAccelerationY(0);
       this.secondPlayer.body.setVelocityY(0);
     }
 
-    if (this.ball.body.velocity.x > 0 && this.ball.x >= this.centerX) {
-      this.physics.moveTo(
+    if (this.ball.body.velocity.x > 0) {
+      this.physics.accelerateTo(
         this.secondPlayer,
         this.secondPlayer.x,
         this.ball.y,
-        300
+        SECOND_PLAYER_ACCELERATION
       );
     }
   }
