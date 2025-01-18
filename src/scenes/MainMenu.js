@@ -15,7 +15,7 @@ const animationExampleOptions = [
 
 const menuOptions = [actionExampleOptions, animationExampleOptions];
 
-const gameOptions = [["Pong"]];
+const gameOptions = [["Pong", "Breakout"]];
 
 export class MainMenu extends Scene {
   constructor() {
